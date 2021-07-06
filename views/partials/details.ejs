@@ -1,0 +1,47 @@
+<div class="col">
+    <img src="<%= book.frontPage %>">
+</div>
+<div class="col">
+    <h1>
+        <%= book.title %>
+    </h1>
+    <h2>
+        <%= book.author %>
+    </h2>
+    <ul>
+        <li>Category: 
+            <%= book.category %>
+        </li>
+        <li>Goodreads Rating: 
+            <%= book.goodreadsRating %> / 5
+        </li>
+        <li>Publication Year: 
+            <%= book.publicationYear %>
+        </li>
+        <li>Pages: 
+            <%= book.numberPages %>
+        </li>
+        <li>Available: 
+            <% if (book.isAvailable) { %>
+                <%= 'Yes' %>
+                    <% } else { %>
+                        <%= 'No' %>
+                <% } %>
+        </li>
+    </ul>
+
+    <button>
+        <a href="/<%= book._id %>/edit " id="changedetails">Change Details</a>
+    </button>
+
+    <form action="/update/<%=book._id%>?_method=PATCH" method="POST">
+        <button>Borrow book from Library</button>
+    </form>
+    
+    <form action="/<%=book._id%>?_method=DELETE" method="POST">
+        <button>Steal book from Library</button>
+    </form>
+    <br>
+
+    <a href="/">Back to All Books</a>
+</div>
